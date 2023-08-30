@@ -32,6 +32,10 @@ had to create a new variable to accomodate the async function ``` const contrAdd
 
 otherwise ``` buyMeACoffee.address``` was returning undefined
 
+replace ```hre.waffle.provider.getBalance(address)``` with ```hre.ethers.provider.getBalance(address)```
+
+remove ```.utils```
+
 ## Deployment instructions:
 Deploy your contract with:
 ```
