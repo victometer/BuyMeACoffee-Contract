@@ -2,8 +2,8 @@ const hre = require("hardhat");
 
 //Returns the ether balance of a given address
 async function getBalance(address) {
-  const balanceBigInt = await hre.waffle.provider.getBalance(address);
-  return hre.ethers.utils.formatEther(balanceBigInt);
+  const balanceBigInt = await hre.ethers.provider.getBalance(address);
+  return hre.ethers.formatEther(balanceBigInt);
 }
 
 //Logs ether balances for a list of addresses
@@ -17,11 +17,12 @@ async function printBalances(addresses) {
 
 //Logs the memos stored on chain
 async function printMemos(memos) {
+  console.log(memos);
   for (const memo in memos) {
-    const timestamp = memo.timestamp;
-    const tipper = memo.name;
-    const tipperAddress = memo.from;
-    const message = memo.message;
+    const timestamp = memo[1];
+    const tipper = memo[2];
+    const tipperAddress = memo[0];
+    const message = memo[3];
     console.log(`At ${timestamp}, ${tipper}, (${tipperAddress}) said: "${message}"`);
   }
 }
@@ -50,7 +51,7 @@ async function main() {
   await printBalances(addresses);
 
   // Buy the owner a coffee
-  const tip = { value: hre.ethers.utils.parseEther('1') };
+  const tip = { value: hre.ethers.parseEther('1') };
   await buyMeACoffee.connect(tipper).buyCoffee('Carol', 'Thanks!', tip)
   await buyMeACoffee.connect(tipper2).buyCoffee('Vitto', 'Great job!', tip)
   await buyMeACoffee.connect(tipper3).buyCoffee('Kay', 'Yay!', tip)
