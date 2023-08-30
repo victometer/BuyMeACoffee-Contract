@@ -25,12 +25,14 @@ SEPOLIA_API_KEY="your Alchemy API key"
 PRIVATE_KEY="your wallet private key"
 You can get an Alchemy RPC URL for free at [www.alchemy.com](https://dashboard.alchemy.com/apps)
 
-## Issues encountered
+## Issues encountered:
 ``` deployed() ``` got deprecated for ``` waitForDeployment()```
+
 had to create a new variable to accomodate the async function ``` const contrAddress = await buyMeACoffee.getAddress()```
+
 otherwise ``` buyMeACoffee.address``` was returning undefined
 
-## Be very careful with exporting your private key
+## Deployment instructions:
 Deploy your contract with:
 ```
 npx hardhat run scripts/deploy.js
