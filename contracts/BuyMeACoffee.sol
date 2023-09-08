@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
+//deployed to sepolia at: 0x1f56a97932FD3Ac742bbD31a4CeC8660486442b6
+
 contract BuyMeACoffee {
     //event when a memo is created
     event NewMemo(
